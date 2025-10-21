@@ -110,13 +110,13 @@ export function Contact() {
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-12 sm:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 section-title">
-              Let's Work Together
+              Let&apos;s Work Together
             </h2>
             <div className="w-16 sm:w-20 h-1 bg-primary mx-auto mb-4 sm:mb-6"></div>
             <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto px-4 sm:px-0">
-              Got a project that's been giving you nightmares? Or maybe you just want to chat about 
-              the latest JavaScript framework that's going to change everything (again)? 
-              I'm here for both. Let's build something that doesn't suck.
+              Got a project that&apos;s been giving you nightmares? Or maybe you just want to chat about 
+              the latest JavaScript framework that&apos;s going to change everything (again)? 
+              I&apos;m here for both. Let&apos;s build something that doesn&apos;t suck.
             </p>
           </motion.div>
 
@@ -155,9 +155,9 @@ export function Contact() {
                 Ready to Make Something Awesome?
               </h3>
               <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto px-4 sm:px-0">
-                Whether you need a full-stack application that doesn't break, 
+                Whether you need a full-stack application that doesn&apos;t break, 
                 performance optimization that actually works, or just someone to 
-                complain about JavaScript with - I'm your guy. Let's turn 
+                complain about JavaScript with - I&apos;m your guy. Let&apos;s turn 
                 your wildest tech dreams into reality (with proper error handling).
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
@@ -183,7 +183,7 @@ export function Contact() {
                     rel="noopener noreferrer"
                   >
                     <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:scale-110 transition-transform" />
-                    Let's Connect 💼
+                    Let&apos;s Connect 💼
                   </a>
                 </Button>
               </div>
@@ -196,7 +196,7 @@ export function Contact() {
             className="text-center text-xs sm:text-sm text-muted-foreground mt-8 sm:mt-12 px-4 sm:px-0"
           >
             Available for freelance gigs, full-time adventures, and collaborations 
-            that don't involve fixing legacy code from 2010
+            that don&apos;t involve fixing legacy code from 2010
           </motion.p>
         </motion.div>
       </div>
