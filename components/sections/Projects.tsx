@@ -172,7 +172,7 @@ export function Projects() {
 
           {/* Projects Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
+            {projects.map((project) => (
               <motion.div key={project.title} variants={cardVariants}>
                 <Card className="p-8 h-full bg-card/50 backdrop-blur-sm border-2 hover:border-primary/50 hover:shadow-2xl transition-all duration-300 group">
                   {/* Project Icon */}

@@ -231,7 +231,7 @@ export function Hero() {
             variants={itemVariants}
             className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 sm:mb-4 md:mb-6 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent leading-tight hero-title px-4 sm:px-0"
           >
-            Hey there! I'm Smit Desai
+            Hey there! I&apos;m Smit Desai
           </motion.h1>
 
           <motion.div variants={itemVariants} className="mb-4 sm:mb-6">
@@ -246,8 +246,8 @@ export function Hero() {
           >
             I turn coffee into code and complex business problems into{" "}
             <span className="text-primary font-semibold">elegant solutions</span>. 
-            When I'm not debugging at 2 AM or optimizing database queries, 
-            I'm building enterprise-grade applications that actually{" "}
+            When I&apos;m not debugging at 2 AM or optimizing database queries, 
+            I&apos;m building enterprise-grade applications that actually{" "}
             <span className="text-primary font-semibold">work</span>.
           </motion.p>
 
@@ -269,7 +269,7 @@ export function Hero() {
               size="lg"
               className="w-full sm:w-auto text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-6 rounded-full border-2 border-primary hover:bg-primary/10"
             >
-              <a href="#contact">Let's Chat 💬</a>
+              <a href="#contact">Let&apos;s Chat 💬</a>
             </Button>
           </motion.div>
 
