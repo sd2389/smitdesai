@@ -93,9 +93,9 @@ export function About() {
           <motion.div variants={itemVariants} className="mb-12 sm:mb-16">
             <Card className="p-6 sm:p-8 bg-card/50 backdrop-blur-sm border-2 hover:border-primary/50 transition-all duration-300">
               <p className="text-sm sm:text-base md:text-lg leading-relaxed text-foreground/90 mb-4 sm:mb-6">
-                I'm the developer who actually <span className="text-primary font-semibold">reads the documentation </span> 
+                I&apos;m the developer who actually <span className="text-primary font-semibold">reads the documentation </span> 
                 and writes code that your future self will thank you for. I specialize in turning 
-                "impossible" requirements into elegant, high-performance solutions that don't 
+                &quot;impossible&quot; requirements into elegant, high-performance solutions that don&apos;t 
                 break when you look at them wrong.
               </p>
               <p className="text-sm sm:text-base md:text-lg leading-relaxed text-foreground/90 mb-4 sm:mb-6">
@@ -106,7 +106,7 @@ export function About() {
                 not just in demos.
               </p>
               <p className="text-sm sm:text-base md:text-lg leading-relaxed text-foreground/90">
-                But I don't just code - I orchestrate entire projects from chaos to completion. 
+                But I don&apos;t just code - I orchestrate entire projects from chaos to completion. 
                 I think like a product owner, manage like a project manager, and solve problems 
                 like a detective with a keyboard. I bridge the gap between{" "}
                 <span className="text-primary font-semibold">tech and business</span>, 

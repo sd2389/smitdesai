@@ -3,9 +3,9 @@
 import { motion, Variants } from "framer-motion";
 import { ArrowDown, Code2, Database, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { AnimatedPath } from "@/components/AnimatedPath";
 
 export function Hero() {
+
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -36,174 +36,21 @@ export function Hero() {
   return (
             <section
               id="home"
-              className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-background via-background to-primary/5 pt-20 sm:pt-0"
-              style={{
-                backgroundImage: `
-                  radial-gradient(circle at 25% 25%, rgba(70, 130, 180, 0.1) 0%, transparent 50%),
-                  radial-gradient(circle at 75% 75%, rgba(70, 130, 180, 0.08) 0%, transparent 50%),
-                  linear-gradient(135deg, rgba(70, 130, 180, 0.03) 0%, transparent 50%)
-                `,
-              }}
+              className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 pt-20 sm:pt-0"
             >
-      {/* Enhanced Animated Background Elements */}
-      <AnimatedPath />
-      
-      {/* Subtle Grid Pattern */}
-      <div 
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(70, 130, 180, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(70, 130, 180, 0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: '50px 50px',
-        }}
-      />
-      
-      {/* Geometric Shapes */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Floating Orbs */}
-        <motion.div
-          className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.6, 0.3],
-            x: [0, 20, 0],
-            y: [0, -10, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
+      {/* Simple Grid Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        {/* Grid pattern */}
+        <div 
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(70, 130, 180, 0.4) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(70, 130, 180, 0.4) 1px, transparent 1px)
+            `,
+            backgroundSize: '30px 30px',
           }}
         />
-        <motion.div
-          className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-tl from-primary/15 to-primary/5 rounded-full blur-3xl"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.2, 0.5, 0.2],
-            x: [0, -15, 0],
-            y: [0, 15, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        
-        {/* Animated Geometric Shapes */}
-        <motion.div
-          className="absolute top-1/4 right-1/4 w-32 h-32 border-2 border-primary/20 rounded-lg rotate-45"
-          animate={{
-            rotate: [45, 405, 45],
-            scale: [1, 1.1, 1],
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-        
-        <motion.div
-          className="absolute bottom-1/3 left-1/4 w-24 h-24 border-2 border-primary/15 rounded-full"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.5, 0.2],
-            y: [0, -20, 0],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        
-        {/* Floating Dots */}
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-primary/30 rounded-full"
-            style={{
-              left: `${20 + i * 15}%`,
-              top: `${30 + (i % 3) * 20}%`,
-            }}
-            animate={{
-              y: [0, -20, 0],
-              opacity: [0.3, 0.8, 0.3],
-              scale: [1, 1.5, 1],
-            }}
-            transition={{
-              duration: 4 + i * 0.5,
-              repeat: Infinity,
-              delay: i * 0.3,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-        
-        {/* Animated Lines */}
-        <motion.div
-          className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"
-          animate={{
-            opacity: [0, 1, 0],
-            scaleX: [0, 1, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            delay: 2,
-          }}
-        />
-        
-        <motion.div
-          className="absolute top-0 left-1/2 w-px h-full bg-gradient-to-b from-transparent via-primary/15 to-transparent"
-          animate={{
-            opacity: [0, 1, 0],
-            scaleY: [0, 1, 0],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            delay: 4,
-          }}
-        />
-        
-        {/* Floating Code Symbols */}
-        <motion.div
-          className="absolute top-1/3 right-1/3 text-primary/20 font-mono text-2xl"
-          animate={{
-            y: [0, -10, 0],
-            opacity: [0.2, 0.4, 0.2],
-            rotate: [0, 5, 0],
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          {'</>'}
-        </motion.div>
-        
-        <motion.div
-          className="absolute bottom-1/4 left-1/3 text-primary/15 font-mono text-xl"
-          animate={{
-            y: [0, 15, 0],
-            opacity: [0.1, 0.3, 0.1],
-            rotate: [0, -3, 0],
-          }}
-          transition={{
-            duration: 7,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-        >
-          {'{}'}
-        </motion.div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -231,7 +78,7 @@ export function Hero() {
             variants={itemVariants}
             className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 sm:mb-4 md:mb-6 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent leading-tight hero-title px-4 sm:px-0"
           >
-            Hey there! I'm Smit Desai
+            Hey there! I&apos;m Smit Desai
           </motion.h1>
 
           <motion.div variants={itemVariants} className="mb-4 sm:mb-6">
@@ -246,8 +93,8 @@ export function Hero() {
           >
             I turn coffee into code and complex business problems into{" "}
             <span className="text-primary font-semibold">elegant solutions</span>. 
-            When I'm not debugging at 2 AM or optimizing database queries, 
-            I'm building enterprise-grade applications that actually{" "}
+            When I&apos;m not debugging at 2 AM or optimizing database queries, 
+            I&apos;m building enterprise-grade applications that actually{" "}
             <span className="text-primary font-semibold">work</span>.
           </motion.p>
 
@@ -269,7 +116,7 @@ export function Hero() {
               size="lg"
               className="w-full sm:w-auto text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-6 rounded-full border-2 border-primary hover:bg-primary/10"
             >
-              <a href="#contact">Let's Chat 💬</a>
+              <a href="#contact">Let&apos;s Chat 💬</a>
             </Button>
           </motion.div>
 
