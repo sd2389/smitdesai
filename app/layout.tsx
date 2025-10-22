@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Fira_Code, Source_Code_Pro, Space_Mono, Orbitron, Exo_2, Rajdhani, Audiowide } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const inter = Inter({
@@ -127,6 +128,7 @@ export default function RootLayout({
         className={`${inter.variable} ${jetbrainsMono.variable} ${firaCode.variable} ${sourceCodePro.variable} ${spaceMono.variable} ${orbitron.variable} ${exo2.variable} ${rajdhani.variable} ${audiowide.variable} font-sans antialiased`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );

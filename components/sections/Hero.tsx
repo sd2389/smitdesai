@@ -58,8 +58,7 @@ export function Hero() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="max-w-5xl mx-auto text-center"
-        >
+          className="max-w-5xl mx-auto text-center">
           {/* Floating Icons - Responsive sizing */}
           <div className="flex justify-center gap-2 sm:gap-4 md:gap-6 lg:gap-8 mb-4 sm:mb-6 md:mb-8">
             <motion.div variants={iconVariants} className="p-1.5 sm:p-2 md:p-3 bg-primary/10 rounded-full">
