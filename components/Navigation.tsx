@@ -65,7 +65,7 @@ export function Navigation() {
             ))}
             <div className="flex items-center gap-4 ml-4 border-l border-border pl-4">
               <motion.a
-                href="https://github.com/smitdesai"
+                href="https://github.com/sd2389"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, rotate: 5 }}
@@ -120,7 +120,7 @@ export function Navigation() {
             ))}
             <div className="flex items-center gap-4 pt-4 border-t border-border">
               <a
-                href="https://github.com/smitdesai"
+                href="https://github.com/sd2389"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"

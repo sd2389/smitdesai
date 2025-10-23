@@ -44,7 +44,7 @@ export function Footer() {
               <h4 className="text-sm sm:text-base font-semibold mb-3 sm:mb-4 text-foreground">Connect</h4>
               <div className="flex gap-3 sm:gap-4">
                 <motion.a
-                  href="https://github.com/smitdesai"
+                  href="https://github.com/sd2389"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 bg-primary/10 rounded-lg hover:bg-primary/20 transition-colors"

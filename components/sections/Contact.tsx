@@ -26,7 +26,7 @@ const contactMethods = [
     icon: Github,
     label: "GitHub",
     value: "github.com/smitdesai",
-    href: "https://github.com/smitdesai",
+    href: "https://github.com/sd2389",
     color: "text-foreground",
   },
   {

@@ -165,7 +165,7 @@ No environment variables required for basic deployment.
 **Smit Desai**
 - Email: smit.desai@example.com
 - LinkedIn: [linkedin.com/in/smssmit](https://www.linkedin.com/in/smssmit)
-- GitHub: [github.com/smitdesai](https://github.com/smitdesai)
+- GitHub: [github.com/smitdesai](https://github.com/sd2389)
 
 ---
 

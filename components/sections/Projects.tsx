@@ -65,8 +65,8 @@ const projects = [
       "Email integration with Nodemailer",
       "Complete accessibility (WCAG compliant)",
     ],
-    link: "#",
-    github: "#",
+    link: "https://dev-solutions-inky.vercel.app/",
+    github: "https://github.com/sd2389/DevSolution",
   },
   {
     title: "TownHall",
@@ -123,7 +123,7 @@ const projects = [
       "Glassmorphism design effects",
     ],
     link: "#",
-    github: "#",
+    github: "https://github.com/sd2389/preetivarma",
   },
 ];
 

@@ -12,7 +12,7 @@ export function StructuredData() {
     "email": "smssmit@gmail.com",
     "sameAs": [
       "https://www.linkedin.com/in/smssmit",
-      "https://github.com/smitdesai"
+      "https://github.com/sd2389"
     ],
     "knowsAbout": [
       "Django",
