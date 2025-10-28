@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Performance optimizations
   experimental: {
-    optimizeCss: true,
+    optimizeCss: false, // Disabled due to critters module issue
     optimizePackageImports: ['framer-motion', 'lucide-react', '@radix-ui/react-slot'],
     turbo: {
       rules: {
@@ -28,47 +28,105 @@ const nextConfig: NextConfig = {
   // Compression
   compress: true,
 
-  // Webpack optimizations for main-thread work
+  // Ultra-aggressive webpack optimizations for main-thread work
   webpack: (config, { isServer, dev }) => {
-    // Optimize for production
+    // Ultra-aggressive optimization for production
     if (!dev) {
       config.optimization = {
         ...config.optimization,
         splitChunks: {
           chunks: 'all',
+          minSize: 10000, // Smaller minimum size
+          maxSize: 50000, // Much smaller chunks
           cacheGroups: {
+            // Core React chunks - critical
+            react: {
+              test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+              name: 'react',
+              chunks: 'all',
+              priority: 40,
+              maxSize: 30000,
+            },
+            // Next.js chunks - critical
+            nextjs: {
+              test: /[\\/]node_modules[\\/]next[\\/]/,
+              name: 'nextjs',
+              chunks: 'all',
+              priority: 35,
+              maxSize: 25000,
+            },
+            // Framer Motion - lazy loaded
+            framerMotion: {
+              test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
+              name: 'framer-motion',
+              chunks: 'async',
+              priority: 20,
+              maxSize: 20000,
+            },
+            // Radix UI - lazy loaded
+            radixUI: {
+              test: /[\\/]node_modules[\\/]@radix-ui[\\/]/,
+              name: 'radix-ui',
+              chunks: 'async',
+              priority: 20,
+              maxSize: 15000,
+            },
+            // Lucide icons - lazy loaded
+            lucide: {
+              test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
+              name: 'lucide',
+              chunks: 'async',
+              priority: 20,
+              maxSize: 10000,
+            },
+            // Other vendors - smaller chunks
             vendor: {
               test: /[\\/]node_modules[\\/]/,
               name: 'vendors',
               chunks: 'all',
               priority: 10,
-            },
-            framerMotion: {
-              test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
-              name: 'framer-motion',
-              chunks: 'all',
-              priority: 20,
-            },
-            radixUI: {
-              test: /[\\/]node_modules[\\/]@radix-ui[\\/]/,
-              name: 'radix-ui',
-              chunks: 'all',
-              priority: 20,
+              maxSize: 25000,
             },
           },
         },
         usedExports: true,
         sideEffects: false,
+        minimize: true,
+        concatenateModules: true,
+        // Additional optimizations
+        providedExports: true,
+        innerGraph: true,
+        mangleExports: true,
       };
+
+      // Enhanced tree shaking and aliases
+      config.resolve.alias = {
+        ...config.resolve.alias,
+      };
+
+      // Additional optimizations
+      config.optimization.moduleIds = 'deterministic';
+      config.optimization.chunkIds = 'deterministic';
     }
 
-    // Reduce bundle size
+    // Reduce bundle size aggressively
     if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
         fs: false,
         net: false,
         tls: false,
+        crypto: false,
+        stream: false,
+        util: false,
+        url: false,
+        assert: false,
+        http: false,
+        https: false,
+        os: false,
+        buffer: false,
+        zlib: false,
+        path: false,
       };
     }
 

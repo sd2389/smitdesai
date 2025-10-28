@@ -10,7 +10,9 @@
     "analyze": "ANALYZE=true next build",
     "lighthouse": "lighthouse https://smitdesai.vercel.app --output html --output-path ./lighthouse-report.html",
     "perf": "npm run build && npm run lighthouse",
-    "budget": "bundlesize"
+    "budget": "bundlesize",
+    "perf:check": "npm run build && npm run analyze && npm run budget",
+    "perf:full": "npm run perf:check && npm run lighthouse"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.1",
@@ -40,12 +42,36 @@
   },
   "bundlesize": [
     {
-      "path": ".next/static/chunks/*.js",
-      "maxSize": "200kb"
+      "path": ".next/static/chunks/main*.js",
+      "maxSize": "50kb"
+    },
+    {
+      "path": ".next/static/chunks/react*.js",
+      "maxSize": "30kb"
+    },
+    {
+      "path": ".next/static/chunks/nextjs*.js",
+      "maxSize": "25kb"
+    },
+    {
+      "path": ".next/static/chunks/framer-motion*.js",
+      "maxSize": "20kb"
+    },
+    {
+      "path": ".next/static/chunks/radix-ui*.js",
+      "maxSize": "15kb"
+    },
+    {
+      "path": ".next/static/chunks/lucide*.js",
+      "maxSize": "10kb"
+    },
+    {
+      "path": ".next/static/chunks/vendors*.js",
+      "maxSize": "25kb"
     },
     {
       "path": ".next/static/css/*.css",
-      "maxSize": "50kb"
+      "maxSize": "20kb"
     }
   ]
 }

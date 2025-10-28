@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
-import { PerformanceMonitor } from "@/components/PerformanceMonitor";
+import { EnhancedPerformanceMonitor } from "@/components/EnhancedPerformanceMonitor";
+import { DeferredAnalytics } from "@/components/DeferredAnalytics";
+import { ServiceWorkerRegistration } from "@/components/ServiceWorkerRegistration";
 import "./globals.css";
 
 // Optimized font loading - only essential fonts
@@ -138,12 +139,37 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        {/* Resource hints for performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://vercel.com" />
+        <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
+        
+        {/* Preload critical resources */}
+        <link rel="preload" href="/_next/static/css/app/layout.css" as="style" />
+        <link rel="preload" href="/_next/static/chunks/main.js" as="script" />
+        
+        {/* Critical CSS */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            /* Critical above-the-fold CSS */
+            body { margin: 0; font-family: var(--font-inter), system-ui, sans-serif; }
+            .hero-section { min-height: 100vh; display: flex; align-items: center; }
+            .hero-content { text-align: center; max-width: 64rem; margin: 0 auto; padding: 0 1rem; }
+            .hero-title { font-size: 2.5rem; font-weight: 700; line-height: 1.2; margin-bottom: 1.5rem; }
+            @media (min-width: 640px) { .hero-title { font-size: 3.75rem; } }
+            @media (min-width: 1024px) { .hero-title { font-size: 4.5rem; } }
+          `
+        }} />
+      </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
         {children}
-        <PerformanceMonitor />
-        <Analytics />
+        <EnhancedPerformanceMonitor />
+        <DeferredAnalytics />
+        <ServiceWorkerRegistration />
       </body>
     </html>
   );

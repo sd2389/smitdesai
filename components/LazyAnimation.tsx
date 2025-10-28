@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { Suspense, lazy } from 'react';
 import { motion } from 'framer-motion';
 
 // Lazy load heavy animation components
-const AnimatedPath = lazy(() => import('@/components/AnimatedPath'));
+const AnimatedPath = lazy(() => import('@/components/AnimatedPath').then(module => ({ default: module.AnimatedPath })));
 
 interface LazyAnimationProps {
   children: React.ReactNode;
