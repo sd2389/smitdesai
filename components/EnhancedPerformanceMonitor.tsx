@@ -1,35 +1,41 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unsafe-function-type */
 "use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 export function EnhancedPerformanceMonitor() {
-  const metricsRef = useRef<Record<string, unknown>>({});
-  const longTasksRef = useRef<number[]>([]);
-
   useEffect(() => {
     // Only run in production and if performance API is available
     if (typeof window === 'undefined' || process.env.NODE_ENV !== 'production') {
       return;
     }
 
+    // Enhanced performance monitoring with more metrics
     const observers: PerformanceObserver[] = [];
 
     try {
-      // Enhanced Core Web Vitals monitoring
+      // Core Web Vitals with enhanced tracking
       if ('PerformanceObserver' in window) {
         // Largest Contentful Paint (LCP) - Enhanced
         const lcpObserver = new PerformanceObserver((list) => {
           const entries = list.getEntries();
           const lastEntry = entries[entries.length - 1];
-          const lcpTime = lastEntry.startTime;
+          const lcpValue = lastEntry.startTime;
           
-          metricsRef.current.lcp = lcpTime;
-          console.log('LCP:', lcpTime);
+          console.log('LCP:', lcpValue);
           
-          // Send to analytics
-          sendMetric('LCP', Math.round(lcpTime));
+          // Send to analytics with enhanced data
+          if (typeof window !== 'undefined' && (window as any).gtag) {
+            (window as any).gtag('event', 'web_vitals', {
+              name: 'LCP',
+              value: Math.round(lcpValue),
+              custom_parameter_1: 'enhanced_monitor',
+            });
+          }
+
+          // Track LCP performance
+          if (lcpValue > 2500) {
+            console.warn('Poor LCP performance:', lcpValue);
+          }
         });
         
         lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
@@ -38,13 +44,22 @@ export function EnhancedPerformanceMonitor() {
         // First Input Delay (FID) - Enhanced
         const fidObserver = new PerformanceObserver((list) => {
           const entries = list.getEntries();
-          entries.forEach((entry) => {
-            const fidEntry = entry as PerformanceEntry & { processingStart: number };
-            const fid = fidEntry.processingStart - fidEntry.startTime;
-            metricsRef.current.fid = fid;
+          entries.forEach((entry: any) => {
+            const fid = entry.processingStart - entry.startTime;
             console.log('FID:', fid);
             
-            sendMetric('FID', Math.round(fid));
+            if (typeof window !== 'undefined' && (window as any).gtag) {
+              (window as any).gtag('event', 'web_vitals', {
+                name: 'FID',
+                value: Math.round(fid),
+                custom_parameter_1: 'enhanced_monitor',
+              });
+            }
+
+            // Track FID performance
+            if (fid > 100) {
+              console.warn('Poor FID performance:', fid);
+            }
           });
         });
         
@@ -55,147 +70,94 @@ export function EnhancedPerformanceMonitor() {
         let clsValue = 0;
         const clsObserver = new PerformanceObserver((list) => {
           const entries = list.getEntries();
-          entries.forEach((entry) => {
-            const clsEntry = entry as PerformanceEntry & { hadRecentInput: boolean; value: number };
-            if (!clsEntry.hadRecentInput) {
-              clsValue += clsEntry.value;
+          entries.forEach((entry: any) => {
+            if (!entry.hadRecentInput) {
+              clsValue += entry.value;
             }
           });
-          metricsRef.current.cls = clsValue;
           console.log('CLS:', clsValue);
           
-          sendMetric('CLS', Math.round(clsValue * 1000) / 1000);
+          if (typeof window !== 'undefined' && (window as any).gtag) {
+            (window as any).gtag('event', 'web_vitals', {
+              name: 'CLS',
+              value: Math.round(clsValue * 1000) / 1000,
+              custom_parameter_1: 'enhanced_monitor',
+            });
+          }
+
+          // Track CLS performance
+          if (clsValue > 0.1) {
+            console.warn('Poor CLS performance:', clsValue);
+          }
         });
         
         clsObserver.observe({ entryTypes: ['layout-shift'] });
         observers.push(clsObserver);
-
-        // Enhanced Long Task Detection
-        const longTaskObserver = new PerformanceObserver((list) => {
-          const entries = list.getEntries();
-          entries.forEach((entry) => {
-            if (entry.duration > 50) { // Tasks longer than 50ms
-              longTasksRef.current.push(entry.duration);
-              console.warn('Long Task Detected:', entry.duration, 'ms');
-              
-              // Send long task metrics
-              sendMetric('LONG_TASK', Math.round(entry.duration));
-            }
-          });
-        });
-        
-        longTaskObserver.observe({ entryTypes: ['longtask'] });
-        observers.push(longTaskObserver);
-
-        // First Contentful Paint (FCP)
-        const fcpObserver = new PerformanceObserver((list) => {
-          const entries = list.getEntries();
-          entries.forEach((entry) => {
-            metricsRef.current.fcp = entry.startTime;
-            console.log('FCP:', entry.startTime);
-            sendMetric('FCP', Math.round(entry.startTime));
-          });
-        });
-        
-        fcpObserver.observe({ entryTypes: ['paint'] });
-        observers.push(fcpObserver);
-
-        // Time to Interactive (TTI) approximation
-        const ttiObserver = new PerformanceObserver((list) => {
-          const entries = list.getEntries();
-          entries.forEach((entry) => {
-            if (entry.name === 'first-input') {
-              const tti = entry.startTime;
-              metricsRef.current.tti = tti;
-              console.log('TTI:', tti);
-              sendMetric('TTI', Math.round(tti));
-            }
-          });
-        });
-        
-        ttiObserver.observe({ entryTypes: ['first-input'] });
-        observers.push(ttiObserver);
       }
 
-      // Monitor main thread work
-      const monitorMainThreadWork = () => {
-        const startTime = performance.now();
-        
-        // Use requestIdleCallback for non-critical monitoring
-        if ('requestIdleCallback' in window) {
-          (window as any).requestIdleCallback(() => {
-            const endTime = performance.now();
-            const workTime = endTime - startTime;
+      // Enhanced main thread work monitoring
+      const longTaskObserver = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        entries.forEach((entry) => {
+          if (entry.duration > 50) { // Tasks longer than 50ms
+            console.log('Long Task:', entry.duration);
             
-            if (workTime > 16) { // More than one frame (60fps)
-              console.log('Main thread work:', workTime, 'ms');
-              sendMetric('MAIN_THREAD_WORK', Math.round(workTime));
+            // Track long tasks
+            if (typeof window !== 'undefined' && (window as any).gtag) {
+              (window as any).gtag('event', 'long_task', {
+                duration: Math.round(entry.duration),
+                custom_parameter_1: 'enhanced_monitor',
+              });
             }
-          });
-        }
-      };
-
-      // Monitor every 5 seconds
-      const monitoringInterval = setInterval(monitorMainThreadWork, 5000);
-
-      // Send comprehensive metrics on page unload
-      const sendComprehensiveMetrics = () => {
-        const comprehensiveMetrics = {
-          ...metricsRef.current,
-          longTasks: longTasksRef.current,
-          longTaskCount: longTasksRef.current.length,
-          averageLongTask: longTasksRef.current.length > 0 
-            ? longTasksRef.current.reduce((a, b) => a + b, 0) / longTasksRef.current.length 
-            : 0,
-          timestamp: Date.now(),
-        };
-
-        // Send to service worker for background processing
-        if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
-          navigator.serviceWorker.controller.postMessage({
-            type: 'PERFORMANCE_METRICS',
-            metrics: comprehensiveMetrics,
-          });
-        }
-
-        // Send to analytics
-        sendMetric('COMPREHENSIVE_METRICS', comprehensiveMetrics);
-      };
-
-      // Send metrics on page unload
-      window.addEventListener('beforeunload', sendComprehensiveMetrics);
-      window.addEventListener('pagehide', sendComprehensiveMetrics);
-
-      // Send metric to analytics
-      const sendMetric = (name: string, value: unknown) => {
-        // Send to Google Analytics if available
-        if (typeof window !== 'undefined' && (window as unknown as { gtag?: Function }).gtag) {
-          ((window as unknown as { gtag: Function }).gtag)('event', 'web_vitals', {
-            name: name,
-            value: value,
-          });
-        }
-
-        // Send to Vercel Analytics if available
-        if (typeof window !== 'undefined' && (window as unknown as { va?: Function }).va) {
-          ((window as unknown as { va: Function }).va)('track', name, { value });
-        }
-      };
-
-      // Cleanup function
-      return () => {
-        clearInterval(monitoringInterval);
-        observers.forEach(observer => {
-          try {
-            observer.disconnect();
-          } catch (error) {
-            console.warn('Error disconnecting observer:', error);
           }
         });
-      };
+      });
+      
+      longTaskObserver.observe({ entryTypes: ['longtask'] });
+      observers.push(longTaskObserver);
+
+      // Resource timing monitoring
+      const resourceObserver = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        entries.forEach((entry: any) => {
+          if (entry.duration > 1000) { // Resources taking >1s
+            console.log('Slow Resource:', entry.name, entry.duration);
+          }
+        });
+      });
+      
+      resourceObserver.observe({ entryTypes: ['resource'] });
+      observers.push(resourceObserver);
+
+      // Navigation timing monitoring
+      const navigationObserver = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        entries.forEach((entry: any) => {
+          console.log('Navigation Timing:', {
+            domContentLoaded: entry.domContentLoadedEventEnd - entry.domContentLoadedEventStart,
+            loadComplete: entry.loadEventEnd - entry.loadEventStart,
+            totalTime: entry.loadEventEnd - entry.navigationStart,
+          });
+        });
+      });
+      
+      navigationObserver.observe({ entryTypes: ['navigation'] });
+      observers.push(navigationObserver);
+
     } catch (error) {
       console.warn('Enhanced performance monitoring not supported:', error);
     }
+
+    // Enhanced cleanup function
+    return () => {
+      observers.forEach(observer => {
+        try {
+          observer.disconnect();
+        } catch (error) {
+          console.warn('Error disconnecting enhanced observer:', error);
+        }
+      });
+    };
   }, []);
 
   return null; // This component doesn't render anything

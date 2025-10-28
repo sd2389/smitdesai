@@ -5,12 +5,14 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizeCss: false, // Disabled due to critters module issue
     optimizePackageImports: ['framer-motion', 'lucide-react', '@radix-ui/react-slot'],
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
+  },
+  
+  // Turbopack configuration (replaces experimental.turbo)
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
       },
     },
   },
@@ -154,6 +156,15 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        source: '/favicon.ico',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
         source: '/static/(.*)',
         headers: [
           {
@@ -170,6 +181,17 @@ const nextConfig: NextConfig = {
             value: 'public, max-age=31536000, immutable',
           },
         ],
+      },
+    ];
+  },
+
+  // Redirects to handle favicon properly
+  async redirects() {
+    return [
+      {
+        source: '/favicon.ico',
+        destination: '/app/favicon.ico',
+        permanent: true,
       },
     ];
   },
