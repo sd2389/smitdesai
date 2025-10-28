@@ -2,6 +2,18 @@
 
 import { useEffect } from 'react';
 
+// Type definitions for performance monitoring
+interface PerformanceEntryWithProcessing extends PerformanceEntry {
+  processingStart?: number;
+  processingEnd?: number;
+  hadRecentInput?: boolean;
+  value?: number;
+}
+
+interface WindowWithGtag extends Window {
+  gtag?: (command: string, targetId: string, config: Record<string, unknown>) => void;
+}
+
 export function EnhancedPerformanceMonitor() {
   useEffect(() => {
     // Only run in production and if performance API is available
@@ -24,8 +36,9 @@ export function EnhancedPerformanceMonitor() {
           console.log('LCP:', lcpValue);
           
           // Send to analytics with enhanced data
-          if (typeof window !== 'undefined' && (window as any).gtag) {
-            (window as any).gtag('event', 'web_vitals', {
+          const windowWithGtag = window as WindowWithGtag;
+          if (windowWithGtag.gtag) {
+            windowWithGtag.gtag('event', 'web_vitals', {
               name: 'LCP',
               value: Math.round(lcpValue),
               custom_parameter_1: 'enhanced_monitor',
@@ -44,12 +57,14 @@ export function EnhancedPerformanceMonitor() {
         // First Input Delay (FID) - Enhanced
         const fidObserver = new PerformanceObserver((list) => {
           const entries = list.getEntries();
-          entries.forEach((entry: any) => {
-            const fid = entry.processingStart - entry.startTime;
+          entries.forEach((entry) => {
+            const fidEntry = entry as PerformanceEntryWithProcessing;
+            const fid = (fidEntry.processingStart || 0) - fidEntry.startTime;
             console.log('FID:', fid);
             
-            if (typeof window !== 'undefined' && (window as any).gtag) {
-              (window as any).gtag('event', 'web_vitals', {
+            const windowWithGtag = window as WindowWithGtag;
+            if (windowWithGtag.gtag) {
+              windowWithGtag.gtag('event', 'web_vitals', {
                 name: 'FID',
                 value: Math.round(fid),
                 custom_parameter_1: 'enhanced_monitor',
@@ -70,15 +85,17 @@ export function EnhancedPerformanceMonitor() {
         let clsValue = 0;
         const clsObserver = new PerformanceObserver((list) => {
           const entries = list.getEntries();
-          entries.forEach((entry: any) => {
-            if (!entry.hadRecentInput) {
-              clsValue += entry.value;
+          entries.forEach((entry) => {
+            const clsEntry = entry as PerformanceEntryWithProcessing;
+            if (!clsEntry.hadRecentInput) {
+              clsValue += clsEntry.value || 0;
             }
           });
           console.log('CLS:', clsValue);
           
-          if (typeof window !== 'undefined' && (window as any).gtag) {
-            (window as any).gtag('event', 'web_vitals', {
+          const windowWithGtag = window as WindowWithGtag;
+          if (windowWithGtag.gtag) {
+            windowWithGtag.gtag('event', 'web_vitals', {
               name: 'CLS',
               value: Math.round(clsValue * 1000) / 1000,
               custom_parameter_1: 'enhanced_monitor',
@@ -103,8 +120,9 @@ export function EnhancedPerformanceMonitor() {
             console.log('Long Task:', entry.duration);
             
             // Track long tasks
-            if (typeof window !== 'undefined' && (window as any).gtag) {
-              (window as any).gtag('event', 'long_task', {
+            const windowWithGtag = window as WindowWithGtag;
+            if (windowWithGtag.gtag) {
+              windowWithGtag.gtag('event', 'long_task', {
                 duration: Math.round(entry.duration),
                 custom_parameter_1: 'enhanced_monitor',
               });
@@ -119,7 +137,7 @@ export function EnhancedPerformanceMonitor() {
       // Resource timing monitoring
       const resourceObserver = new PerformanceObserver((list) => {
         const entries = list.getEntries();
-        entries.forEach((entry: any) => {
+        entries.forEach((entry) => {
           if (entry.duration > 1000) { // Resources taking >1s
             console.log('Slow Resource:', entry.name, entry.duration);
           }
@@ -132,11 +150,12 @@ export function EnhancedPerformanceMonitor() {
       // Navigation timing monitoring
       const navigationObserver = new PerformanceObserver((list) => {
         const entries = list.getEntries();
-        entries.forEach((entry: any) => {
+        entries.forEach((entry) => {
+          const navEntry = entry as PerformanceEntryWithProcessing;
           console.log('Navigation Timing:', {
-            domContentLoaded: entry.domContentLoadedEventEnd - entry.domContentLoadedEventStart,
-            loadComplete: entry.loadEventEnd - entry.loadEventStart,
-            totalTime: entry.loadEventEnd - entry.navigationStart,
+            domContentLoaded: (navEntry.processingStart || 0) - (navEntry.processingEnd || 0),
+            loadComplete: entry.duration,
+            totalTime: entry.startTime,
           });
         });
       });
