@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "ANALYZE=true next build",
+    "lighthouse": "lighthouse https://smitdesai.vercel.app --output html --output-path ./lighthouse-report.html"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.1",
@@ -22,12 +24,14 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
+    "@next/bundle-analyzer": "^15.1.4",
     "@tailwindcss/postcss": "^4.0.0",
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.2",
     "eslint": "^9.18.0",
     "eslint-config-next": "^15.1.4",
+    "lighthouse": "^12.0.0",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.2"
   }

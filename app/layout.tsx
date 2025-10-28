@@ -1,65 +1,37 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Fira_Code, Source_Code_Pro, Space_Mono, Orbitron, Exo_2, Rajdhani, Audiowide } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { PerformanceMonitor } from "@/components/PerformanceMonitor";
 import "./globals.css";
 
+// Optimized font loading - only essential fonts
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
+  preload: true,
+  fallback: [
+    "system-ui",
+    "-apple-system",
+    "BlinkMacSystemFont",
+    "Segoe UI",
+    "Roboto",
+    "sans-serif"
+  ],
 });
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
   display: "swap",
-});
-
-const firaCode = Fira_Code({
-  variable: "--font-fira-code",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const sourceCodePro = Source_Code_Pro({
-  variable: "--font-source-code-pro",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const spaceMono = Space_Mono({
-  variable: "--font-space-mono",
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  display: "swap",
-});
-
-const orbitron = Orbitron({
-  variable: "--font-orbitron",
-  subsets: ["latin"],
-  weight: ["400", "700", "900"],
-  display: "swap",
-});
-
-const exo2 = Exo_2({
-  variable: "--font-exo-2",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  display: "swap",
-});
-
-const rajdhani = Rajdhani({
-  variable: "--font-rajdhani",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-});
-
-const audiowide = Audiowide({
-  variable: "--font-audiowide",
-  subsets: ["latin"],
-  weight: ["400"],
-  display: "swap",
+  preload: false, // Only load when needed
+  fallback: [
+    "ui-monospace",
+    "SFMono-Regular",
+    "Monaco",
+    "Consolas",
+    "monospace"
+  ],
 });
 
 export const metadata: Metadata = {
@@ -167,9 +139,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} ${firaCode.variable} ${sourceCodePro.variable} ${spaceMono.variable} ${orbitron.variable} ${exo2.variable} ${rajdhani.variable} ${audiowide.variable} font-sans antialiased`}
+        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
         {children}
+        <PerformanceMonitor />
         <Analytics />
       </body>
     </html>
