@@ -185,13 +185,12 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  // Redirects to handle favicon properly
-  async redirects() {
+  // Rewrites to handle favicon properly
+  async rewrites() {
     return [
       {
         source: '/favicon.ico',
         destination: '/app/favicon.ico',
-        permanent: true,
       },
     ];
   },
