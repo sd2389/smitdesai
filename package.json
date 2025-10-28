@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "analyze": "ANALYZE=true next build",
-    "lighthouse": "lighthouse https://smitdesai.vercel.app --output html --output-path ./lighthouse-report.html"
+    "lighthouse": "lighthouse https://smitdesai.vercel.app --output html --output-path ./lighthouse-report.html",
+    "perf": "npm run build && npm run lighthouse",
+    "budget": "bundlesize"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.1",
@@ -29,10 +31,21 @@
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.2",
+    "bundlesize": "^0.18.2",
     "eslint": "^9.18.0",
     "eslint-config-next": "^15.1.4",
     "lighthouse": "^12.0.0",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.2"
-  }
+  },
+  "bundlesize": [
+    {
+      "path": ".next/static/chunks/*.js",
+      "maxSize": "200kb"
+    },
+    {
+      "path": ".next/static/css/*.css",
+      "maxSize": "50kb"
+    }
+  ]
 }
