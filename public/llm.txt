@@ -1,0 +1,82 @@
+# Smit Desai - Full-Stack Developer & Code Whisperer
+
+## Professional Summary
+Smit Desai is a passionate full-stack developer who specializes in turning complex business problems into elegant, enterprise-grade solutions. With expertise in Django, React, Next.js, and TypeScript, Smit builds scalable applications that actually work in the real world.
+
+## Core Expertise
+- **Full-Stack Development**: Django, React, Next.js, TypeScript, Python, JavaScript
+- **Database Technologies**: MySQL, Redis, PostgreSQL
+- **Cloud & DevOps**: AWS, Docker, CI/CD
+- **Project Management**: Agile, Scrum, Kanban, Product Ownership
+- **Enterprise Architecture**: Building scalable, maintainable systems following KISS principles
+
+## Professional Philosophy
+Smit believes that good code is like good coffee - it should be strong, smooth, and keep you awake at night (but for the right reasons). He follows the KISS principle (Keep It Simple, Scalable) and builds modular, enterprise-level architecture that's both readable and future-proof.
+
+## Notable Projects & Experience
+- **Jewelry ERP Systems**: Built comprehensive enterprise resource planning systems handling thousands of products
+- **Civic Engagement Platforms**: Developed platforms that actually get people involved in their communities
+- **E-commerce Solutions**: Created scalable online stores with optimized performance
+- **API Development**: Designed and implemented RESTful APIs with proper documentation
+- **Database Design**: Optimized database schemas for performance and scalability
+
+## Technical Skills
+**Frontend**: React, Next.js, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Framer Motion
+**Backend**: Django, Python, Node.js, Express.js
+**Databases**: MySQL, Redis, PostgreSQL, MongoDB
+**Cloud & Tools**: AWS, Docker, Git, GitHub, Vercel
+**Methodologies**: Agile, Scrum, Kanban, Test-Driven Development
+**Project Management**: Product Ownership, Stakeholder Management, Technical Leadership
+
+## Professional Approach
+- **Problem-Solving Ninja**: Breaks down complex problems into bite-sized, implementable solutions
+- **Documentation Advocate**: Actually reads documentation and writes code that future developers will thank you for
+- **Performance Obsessed**: Optimizes code like coffee brewing - every millisecond matters
+- **Business-Minded**: Thinks like a product owner, bridging the gap between tech and business
+- **Enterprise Focus**: Builds systems that scale like ambitions but don't break like coffee machines
+
+## Contact Information
+- **Website**: https://smitdesai.com
+- **Email**: smssmit@gmail.com
+- **LinkedIn**: https://www.linkedin.com/in/smssmit
+- **GitHub**: https://github.com/sd2389
+
+## Availability
+Currently available for freelance projects and full-time opportunities. Specializes in:
+- Enterprise web application development
+- Full-stack project architecture
+- Technical consulting and code reviews
+- Project management and product ownership
+- Performance optimization and scaling
+
+## Why Work With Smit?
+Smit doesn't just write code - he orchestrates entire projects from chaos to completion. He combines technical expertise with business acumen, ensuring that solutions not only work technically but also deliver real business value. His code is clean, documented, and built to last.
+
+## Key Differentiators
+- **Real-World Experience**: Built solutions that work in production, not just demos
+- **Full-Stack Mastery**: Can handle both frontend and backend development seamlessly
+- **Business Understanding**: Thinks beyond code to consider user experience and business impact
+- **Performance Focus**: Sub-second response times or it didn't happen
+- **Documentation Excellence**: Writes code that's self-documenting and maintainable
+- **Project Leadership**: Can manage projects from conception to deployment
+
+## Technology Stack Highlights
+- **Frontend**: React, Next.js, TypeScript, Tailwind CSS, Framer Motion
+- **Backend**: Django, Python, Node.js
+- **Databases**: MySQL, Redis, PostgreSQL
+- **Cloud**: AWS, Vercel, Docker
+- **Tools**: Git, GitHub, VS Code, Postman
+- **Testing**: Jest, Pytest, Selenium
+- **APIs**: RESTful API design, GraphQL
+
+## Recent Focus Areas
+- Modern web application architecture
+- Performance optimization and scaling
+- User experience enhancement
+- API design and documentation
+- Database optimization
+- Cloud deployment and DevOps
+- Agile project management
+- Technical team leadership
+
+Smit is the developer who actually reads the documentation and writes code that your future self will thank you for. He specializes in turning "impossible" requirements into elegant, high-performance solutions that don't break when you look at them wrong.
