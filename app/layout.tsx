@@ -115,6 +115,27 @@ export const metadata: Metadata = {
     canonical: "https://smitdesai.com",
   },
   category: "Technology",
+  other: {
+    "google-site-verification": "your-google-verification-code",
+    "msvalidate.01": "your-bing-verification-code",
+    "yandex-verification": "your-yandex-verification-code",
+    "baidu-site-verification": "your-baidu-verification-code",
+    "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "googlebot": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "bingbot": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "slurp": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "duckduckbot": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "baiduspider": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "yandexbot": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "gptbot": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "chatgpt-user": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "ccbot": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "anthropic-ai": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "claude-web": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "perplexitybot": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "youbot": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    "bard": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+  },
 };
 
 export default function RootLayout({
