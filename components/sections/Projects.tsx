@@ -6,7 +6,7 @@ import { useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, TrendingUp, Users, Zap, ShoppingCart } from "lucide-react";
+import { ExternalLink, Github, TrendingUp, Users, Zap, ShoppingCart, BarChart } from "lucide-react";
 
 const projects = [
   {
@@ -124,6 +124,36 @@ const projects = [
     ],
     link: "#",
     github: "https://github.com/sd2389/preetivarma",
+  },
+  {
+    title: "Product Intelligence Platform",
+    subtitle: "Data-Driven Product Management & Analytics",
+    description:
+      "A comprehensive product management intelligence platform combining analytics, customer feedback, and roadmap planning. Features real-time user behavior tracking, A/B testing, sentiment analysis, RICE prioritization, and interactive roadmap visualization with advanced data visualizations.",
+    icon: BarChart,
+    metrics: [
+      "40% Feature Adoption",
+      "Real-time Analytics",
+      "AI Sentiment Analysis",
+      "RICE Prioritization",
+    ],
+    technologies: [
+      "Next.js 14",
+      "TypeScript",
+      "Recharts",
+      "React Hook Form",
+      "Zod",
+      "Tailwind CSS",
+      "Framer Motion",
+    ],
+    highlights: [
+      "Real-time analytics dashboard with live metrics",
+      "Customer feedback collection with sentiment analysis",
+      "Interactive roadmap with timeline visualization",
+      "Advanced A/B testing with statistical significance",
+    ],
+    link: "https://product-intelligence.vercel.app",
+    github: "https://github.com/smitdesai/product-intelligence",
   },
 ];
 

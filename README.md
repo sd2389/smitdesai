@@ -136,6 +136,7 @@ smitdesai/
 2. **DevSolutions** - AI-powered marketing platform
 3. **TownHall** - Civic engagement platform
 4. **Preeti Varma Portfolio** - Professional portfolio website
+5. **Product Intelligence Platform** - Data-driven product management & analytics
 
 ---
 

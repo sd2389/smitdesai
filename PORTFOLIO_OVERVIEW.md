@@ -40,11 +40,12 @@ Then open: **http://localhost:3000**
    - Scroll-triggered animations
 
 3. **Projects Section** (`#projects`)
-   - **4 Featured Projects:**
+   - **5 Featured Projects:**
      - **DevERP**: Jewelry ERP system with 2,200+ products
      - **DevSolutions**: AI-powered marketing platform
      - **TownHall**: Civic engagement platform
      - **Preeti Varma Portfolio**: Professional portfolio site
+     - **Product Intelligence Platform**: Data-driven product management & analytics
    - Each project includes:
      - Description and metrics
      - Tech stack badges
@@ -304,6 +305,12 @@ Your portfolio is built to:
 - Professional design
 - Advanced SEO
 
+### Product Intelligence Highlights
+- Real-time analytics dashboard
+- AI sentiment analysis
+- RICE prioritization framework
+- A/B testing with statistical significance
+
 ---
 
 ## 🌟 What Sets This Apart
@@ -331,7 +338,7 @@ If you need help:
 
 **You're all set!** 🎉
 
-Your portfolio showcases your skills as a Full-Stack Developer with 4 amazing projects, comprehensive skill set, and professional presentation. 
+Your portfolio showcases your skills as a Full-Stack Developer with 5 amazing projects, comprehensive skill set, and professional presentation. 
 
 Just update the contact information, test it out, and deploy to show the world what you can do!
 
