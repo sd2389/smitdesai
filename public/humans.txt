@@ -1,0 +1,47 @@
+# Humans.txt - Information about the people behind this website
+
+# TEAM
+    Developer: Smit Desai
+    Contact: smssmit@gmail.com
+    Website: https://smitdesai.vercel.app
+    LinkedIn: https://www.linkedin.com/in/smssmit
+    GitHub: https://github.com/sd2389
+
+# THANKS
+    Framework: Next.js 15
+    Styling: Tailwind CSS
+    Animations: Framer Motion
+    Icons: Lucide React
+    UI Components: shadcn/ui
+    Deployment: Vercel
+
+# SITE
+    Last update: 2024/01/15
+    Language: English
+    Doctype: HTML5
+    IDE: VS Code
+
+# COLOPHON
+    Fonts: Inter, JetBrains Mono
+    Colors: Steel Blue (#4682B4)
+    Design: Modern, Minimalist, Professional
+    Architecture: Enterprise-grade, Scalable
+
+# TECHNOLOGY
+    Frontend: React, Next.js, TypeScript, Tailwind CSS
+    Backend: Django, Python, MySQL, Redis
+    DevOps: AWS, Vercel, Docker
+    Tools: Git, ESLint, PostCSS
+
+# PROJECTS
+    DevERP: Jewelry industry ERP system
+    DevSolutions: AI-powered marketing platform
+    TownHall: Civic engagement platform
+    Preeti Varma Portfolio: Professional portfolio website
+    Product Intelligence Platform: Data-driven product management
+
+# AVAILABILITY
+    Status: Available for hire
+    Location: Remote / Global
+    Services: Full-stack development, consulting, enterprise solutions
+    Industries: E-commerce, ERP, SaaS, Portfolio websites, Civic engagement

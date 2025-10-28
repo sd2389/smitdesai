@@ -1,0 +1,163 @@
+# Smit Desai - Personal Portfolio Website
+
+## Project Overview
+This is a modern, high-performance personal portfolio website built with Next.js 15, TypeScript, Tailwind CSS, and Framer Motion. The site showcases enterprise-grade projects and technical expertise with a professional steel blue theme.
+
+## Tech Stack
+- **Framework**: Next.js 15 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **UI Components**: shadcn/ui with Radix UI primitives
+- **Icons**: Lucide React
+- **Deployment**: Vercel
+
+## Project Structure
+```
+smitdesai/
+├── app/
+│   ├── layout.tsx          # Root layout with fonts & metadata
+│   ├── page.tsx            # Homepage
+│   ├── sitemap.ts          # Dynamic sitemap
+│   ├── robots.ts           # Robots.txt
+│   └── globals.css         # Global styles & steel blue theme
+├── components/
+│   ├── Navigation.tsx      # Main navigation
+│   ├── AnimatedPath.tsx    # SVG path drawing animations
+│   ├── StructuredData.tsx  # JSON-LD structured data
+│   ├── sections/
+│   │   ├── Hero.tsx        # Hero section with animations
+│   │   ├── About.tsx       # About section
+│   │   ├── Projects.tsx    # Featured projects
+│   │   ├── Skills.tsx      # Skills & expertise
+│   │   ├── Contact.tsx     # Contact section with SVG animations
+│   │   └── Footer.tsx      # Footer
+│   └── ui/                 # shadcn/ui components
+│       ├── button.tsx
+│       ├── card.tsx
+│       └── badge.tsx
+├── lib/
+│   └── utils.ts            # Utility functions
+└── public/
+    ├── resume.pdf          # Downloadable resume
+    └── *.svg               # Icon assets
+```
+
+## Key Features
+- Modern, minimalist UI with steel blue theme (#4682B4)
+- Smooth animations with Framer Motion
+- SVG path drawing animations
+- Responsive design (mobile-first)
+- Gradient effects and backdrop blur
+- Interactive hover states and micro-interactions
+- Comprehensive SEO optimization
+- Performance-optimized animations
+- Semantic HTML structure
+
+## Design System
+**Primary Color**: Steel Blue (#4682B4) converted to oklch for better consistency
+- Light Mode: `oklch(0.55 0.12 245)`
+- Dark Mode: `oklch(0.65 0.14 245)`
+
+**Typography**:
+- Body: Inter (variable font)
+- Code: JetBrains Mono (variable font)
+
+## Featured Projects
+1. **DevERP** - Jewelry industry ERP system with real-time inventory
+2. **DevSolutions** - AI-powered marketing platform
+3. **TownHall** - Civic engagement platform
+4. **Preeti Varma Portfolio** - Professional portfolio website
+5. **Product Intelligence Platform** - Data-driven product management & analytics
+
+## Performance Metrics
+- Total First Load JS: 157 KB
+- Expected Lighthouse Scores: 95-100 across all categories
+- Core Web Vitals optimized for < 1.2s LCP, < 100ms FID, < 0.1 CLS
+
+## SEO Features
+- Comprehensive meta tags
+- Open Graph for social sharing
+- Twitter Cards
+- Dynamic sitemap at `/sitemap.xml`
+- Robots.txt at `/robots.txt`
+- JSON-LD structured data
+- Semantic HTML structure
+
+## Development Guidelines
+- Follow KISS principle (Keep It Simple, Scalable)
+- Use modular architecture with reusable components
+- Single responsibility functions only
+- Enterprise-level structure (scalable, readable, future-proof)
+- Refactoring must improve scalability and reusability
+- Use consistent icons throughout (Lucide React)
+
+## Developer Profile & Skills
+**Smit Desai** is a Full-Stack Developer specializing in:
+- Enterprise-grade web applications
+- Next.js 15 and React development
+- TypeScript and modern JavaScript
+- Tailwind CSS and responsive design
+- Framer Motion animations
+- Performance optimization
+- SEO and accessibility
+- Database design and management
+- API development and integration
+- DevOps and deployment (Vercel, AWS)
+
+**Available for**: Freelance projects, consulting, full-time positions, enterprise solutions
+
+**Industries**: E-commerce, ERP systems, SaaS platforms, portfolio websites, civic engagement platforms
+
+## Contact Information
+- Email: smit.desai@example.com
+- LinkedIn: linkedin.com/in/smssmit
+- GitHub: github.com/sd2389
+- Website: smitdesai.com
+
+## Development Commands
+```bash
+npm run dev      # Start development server
+npm run build    # Create production build
+npm run start    # Start production server
+npm run lint     # Run ESLint
+```
+
+## Deployment
+- Primary: Vercel (recommended)
+- Environment: No environment variables required for basic deployment
+- Domain: smitdesai.com
+
+## File Conventions
+- Components use PascalCase (e.g., `Hero.tsx`)
+- Utilities use camelCase (e.g., `utils.ts`)
+- CSS classes follow Tailwind conventions
+- TypeScript interfaces use PascalCase
+- Constants use UPPER_SNAKE_CASE
+
+## Animation Guidelines
+- Use Framer Motion for all animations
+- Implement scroll-triggered animations for performance
+- Stagger animations for better visual flow
+- Use `motion` components with proper variants
+- Optimize animations for mobile devices
+
+## Accessibility
+- Semantic HTML elements
+- Proper ARIA attributes
+- Keyboard navigation support
+- Screen reader friendly
+- Focus indicators
+- Touch-friendly targets (48px minimum)
+
+## Future Enhancements
+- Dark mode toggle
+- Blog section
+- Contact form with backend
+- Testimonials section
+- Case study pages
+- Internationalization (i18n)
+- Project filters
+- Achievement/awards section
+
+This project represents enterprise-level development practices with a focus on performance, accessibility, and maintainability.

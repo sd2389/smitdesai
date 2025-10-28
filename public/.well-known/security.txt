@@ -1,0 +1,30 @@
+# Security.txt - Security policy and contact information
+
+Contact: mailto:smssmit@gmail.com
+Contact: https://smitdesai.vercel.app/#contact
+Expires: 2025-01-15T00:00:00.000Z
+Encryption: https://smitdesai.vercel.app/pgp-key.txt
+Acknowledgments: https://smitdesai.vercel.app/security-acknowledgments
+Preferred-Languages: en
+Canonical: https://smitdesai.vercel.app/.well-known/security.txt
+
+# Security Policy
+# This website is a personal portfolio and does not handle sensitive user data.
+# If you discover a security vulnerability, please report it responsibly.
+
+# Scope
+# This security policy applies to:
+# - https://smitdesai.com
+# - All subdomains and related services
+
+# Out of Scope
+# - Third-party services and dependencies
+# - Social media profiles
+# - External links and resources
+
+# Response Time
+# We will respond to security reports within 48 hours.
+
+# Rewards
+# While we appreciate security research, we do not currently offer monetary rewards.
+# However, we will acknowledge responsible disclosure publicly.
