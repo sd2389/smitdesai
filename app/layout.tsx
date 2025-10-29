@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import { EnhancedPerformanceMonitor } from "@/components/EnhancedPerformanceMonitor";
 import { DeferredAnalytics } from "@/components/DeferredAnalytics";
 import { ServiceWorkerRegistration } from "@/components/ServiceWorkerRegistration";
+import { LCPMonitor } from "@/components/LCPMonitor";
 import "./globals.css";
 
 // Optimized font loading - only essential fonts
@@ -146,20 +147,152 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://vercel.com" />
         <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
         
-        {/* Preload critical resources */}
+        {/* Preload critical resources for LCP optimization */}
         <link rel="preload" href="/_next/static/css/app/layout.css" as="style" />
         <link rel="preload" href="/_next/static/chunks/main.js" as="script" />
         
-        {/* Critical CSS */}
+        {/* Preload critical fonts for LCP */}
+        <link 
+          rel="preload" 
+          href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2" 
+          as="font" 
+          type="font/woff2" 
+          crossOrigin="anonymous" 
+        />
+        
+        {/* Preload hero section critical resources */}
+        <link rel="preload" href="/_next/static/chunks/app/page.js" as="script" />
+        
+        {/* Critical CSS for LCP optimization */}
         <style dangerouslySetInnerHTML={{
           __html: `
-            /* Critical above-the-fold CSS */
-            body { margin: 0; font-family: var(--font-inter), system-ui, sans-serif; }
-            .hero-section { min-height: 100vh; display: flex; align-items: center; }
-            .hero-content { text-align: center; max-width: 64rem; margin: 0 auto; padding: 0 1rem; }
-            .hero-title { font-size: 2.5rem; font-weight: 700; line-height: 1.2; margin-bottom: 1.5rem; }
-            @media (min-width: 640px) { .hero-title { font-size: 3.75rem; } }
-            @media (min-width: 1024px) { .hero-title { font-size: 4.5rem; } }
+            /* Critical above-the-fold CSS - LCP optimized */
+            * { box-sizing: border-box; }
+            body { 
+              margin: 0; 
+              font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+              line-height: 1.6;
+              color: #1f2937;
+              background: #ffffff;
+            }
+            
+            /* Hero section critical styles */
+            .hero-lcp-section {
+              min-height: 100vh;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 50%, #f0f9ff 100%);
+              position: relative;
+              overflow: hidden;
+            }
+            
+            .hero-lcp-content {
+              text-align: center;
+              max-width: 64rem;
+              margin: 0 auto;
+              padding: 0 1rem;
+              position: relative;
+              z-index: 10;
+            }
+            
+            .hero-lcp-title {
+              font-size: clamp(2rem, 5vw, 4.5rem);
+              font-weight: 700;
+              line-height: 1.2;
+              margin-bottom: 1.5rem;
+              background: linear-gradient(90deg, #1f2937 0%, #4682B4 50%, #1f2937 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+              color: transparent;
+            }
+            
+            .hero-lcp-subtitle {
+              font-size: clamp(1.125rem, 3vw, 2.25rem);
+              font-weight: 600;
+              color: #6b7280;
+              margin-bottom: 1.5rem;
+            }
+            
+            .hero-lcp-description {
+              font-size: clamp(1rem, 2.5vw, 1.25rem);
+              color: #6b7280;
+              max-width: 48rem;
+              margin: 0 auto 2rem;
+              line-height: 1.6;
+              opacity: 1;
+              transform: none;
+            }
+            
+            .hero-lcp-buttons {
+              display: flex;
+              flex-direction: column;
+              gap: 1rem;
+              justify-content: center;
+              align-items: center;
+              margin-bottom: 3rem;
+            }
+            
+            .hero-lcp-button {
+              padding: 1rem 2rem;
+              border-radius: 9999px;
+              font-weight: 600;
+              text-decoration: none;
+              display: inline-block;
+              transition: all 0.2s ease;
+              border: none;
+              cursor: pointer;
+            }
+            
+            .hero-lcp-button-primary {
+              background-color: #4682B4;
+              color: white;
+            }
+            
+            .hero-lcp-button-secondary {
+              border: 2px solid #4682B4;
+              color: #4682B4;
+              background-color: transparent;
+            }
+            
+            .hero-lcp-tech-stack {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              gap: 0.5rem;
+              margin-top: 3rem;
+            }
+            
+            .hero-lcp-tech-item {
+              padding: 0.5rem 1rem;
+              background-color: rgba(70, 130, 180, 0.05);
+              color: #1d4ed8;
+              border-radius: 9999px;
+              font-size: 0.875rem;
+              font-weight: 500;
+              border: 1px solid rgba(70, 130, 180, 0.2);
+            }
+            
+            @media (min-width: 640px) {
+              .hero-lcp-buttons {
+                flex-direction: row;
+              }
+            }
+            
+            /* Grid background */
+            .hero-lcp-grid {
+              position: absolute;
+              inset: 0;
+              overflow: hidden;
+              pointer-events: none;
+              z-index: 0;
+              background-image: 
+                linear-gradient(rgba(70, 130, 180, 0.4) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(70, 130, 180, 0.4) 1px, transparent 1px);
+              background-size: 30px 30px;
+              opacity: 0.3;
+            }
           `
         }} />
       </head>
@@ -167,6 +300,7 @@ export default function RootLayout({
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
         {children}
+        <LCPMonitor />
         <EnhancedPerformanceMonitor />
         <DeferredAnalytics />
         <ServiceWorkerRegistration />
