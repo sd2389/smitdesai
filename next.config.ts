@@ -5,7 +5,12 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizeCss: false, // Disabled due to critters module issue
     optimizePackageImports: ['framer-motion', 'lucide-react', '@radix-ui/react-slot'],
+    // LCP optimizations
+    optimizeServerReact: true,
   },
+  
+  // Server external packages (moved from experimental)
+  // Note: framer-motion is client-side only, so we don't externalize it
   
   // Turbopack configuration (replaces experimental.turbo)
   turbopack: {

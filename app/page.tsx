@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { Navigation } from "@/components/Navigation";
-import { LazyAnimation, HeroOptimized, AboutOptimized } from "@/components/LazyComponents";
+import { LazyAnimation, AboutOptimized } from "@/components/LazyComponents";
+import { HeroLCP } from "@/components/sections/HeroLCP";
 import { Projects } from "@/components/sections/Projects";
 import { Skills } from "@/components/sections/Skills";
 import { Contact } from "@/components/sections/Contact";
@@ -22,10 +23,8 @@ export default function Home() {
       <StructuredData />
       <Navigation />
       <main>
-        {/* Critical above-the-fold content loads immediately */}
-        <Suspense fallback={<SectionFallback />}>
-          <HeroOptimized />
-        </Suspense>
+        {/* Critical above-the-fold content loads immediately - LCP optimized */}
+        <HeroLCP />
         
         {/* Non-critical content loads lazily */}
         <LazyAnimation>
