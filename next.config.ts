@@ -176,6 +176,16 @@ const nextConfig: NextConfig = {
     ];
   },
 
+  // Redirects to handle favicon properly - DEFINITIVE FIX
+  async redirects() {
+    return [
+      {
+        source: '/favicon.ico',
+        destination: '/api/favicon',
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
