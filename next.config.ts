@@ -156,15 +156,6 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: '/favicon.ico',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
         source: '/static/(.*)',
         headers: [
           {
@@ -185,15 +176,6 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  // Rewrites to handle favicon properly
-  async rewrites() {
-    return [
-      {
-        source: '/favicon.ico',
-        destination: '/app/favicon.ico',
-      },
-    ];
-  },
 };
 
 export default nextConfig;
